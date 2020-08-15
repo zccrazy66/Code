@@ -30,6 +30,9 @@ public class MeiTuan03 {
             map.put(b,list2);
             // System.out.println(b+"+"+Arrays.toString(list2.toArray()));
         }
+        Integer[] integers= integerList.toArray(new Integer[integerList.size()]);
+          Arrays.sort(integers);
+          integerList=new ArrayList<Integer>(Arrays.asList(integers));
         // System.out.println(Arrays.toString(map.get(1).toArray()));
         List<Set<Integer>> list=new ArrayList<>();
         for (int i=0;i<integerList.size();i++){
