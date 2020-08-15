@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class shuru {
 
+    // 二维数组
     private static void erweishuzu (){
         Scanner in = new Scanner(System.in);
         int num = in.nextInt();
