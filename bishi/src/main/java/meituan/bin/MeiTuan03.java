@@ -1,6 +1,5 @@
 package meituan.bin;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -63,7 +62,12 @@ public class MeiTuan03 {
         System.out.println(list.size());
         for (int i=0;i<list.size();i++){
             PriorityQueue<Integer> queue= new PriorityQueue<>(list.get(i));
-            System.out.println(Arrays.toString(queue.toArray()));
+            int t=queue.size();
+            for (int k=0;k<t;k++){
+                System.out.print(queue.poll());
+            }
+            System.out.println();
+
 
         }
 
