@@ -1,18 +1,12 @@
 package meituan.bin;
 
-import java.util.Scanner;
-
-/**
- * Created by 林松斌的船 on 2020/8/15.
- */
-
 import java.util.*;
 import java.util.stream.Collectors;
 
 /**
  * Created by 林松斌的船 on 2020/8/15.
  */
-class WorkflowNode {
+ class WorkflowNode {
     String nodeId;
     int timeoutMillis;
     List<WorkflowNode> nextNodes;
@@ -53,9 +47,9 @@ class WorkflowNode {
     }
 
 }
-public class Main {
 
-    int resmax=Integer.MIN_VALUE;
+public class Main {
+     int resmax=Integer.MIN_VALUE;
     public static void main(String args[]) {
         Scanner cin = new Scanner(System.in);
         Main main=new Main();
@@ -68,11 +62,11 @@ public class Main {
 
     }
     public void help(WorkflowNode workflowNode,int time){
-        if (workflowNode.nextNodes==null){
-            resmax=Math.max(resmax,time);
-        }
-        for (int i=0;i<workflowNode.nextNodes.size();i++){
-            help(workflowNode.nextNodes.get(i),time+workflowNode.nextNodes.get(i).timeoutMillis);
-        }
+            if (workflowNode.nextNodes==null){
+                resmax=Math.max(resmax,time);
+            }
+            for (int i=0;i<workflowNode.nextNodes.size();i++){
+                help(workflowNode.nextNodes.get(i),time+workflowNode.nextNodes.get(i).timeoutMillis);
+            }
     }
 }
