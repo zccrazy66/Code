@@ -6,7 +6,7 @@ package meituan.joey;
  */
 public class Solution {
     public static void main(String[] args) {
-        System.out.println("测试推送");
+        System.out.println("testtest");
     }
 
 }
