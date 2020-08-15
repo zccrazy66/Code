@@ -1,7 +1,8 @@
 package meituan.bin;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import meituan.zczc.WorkflowNode;
+
+import java.util.Scanner;
 
 /**
  * Created by 林松斌的船 on 2020/8/15.
