@@ -56,7 +56,7 @@ public class MeiTuan03 {
                     }
                 }
             }
-            System.out.println(Arrays.toString(set.toArray()));
+          //  System.out.println(Arrays.toString(set.toArray()));
             list.add(set);
         }
         System.out.println(list.size());
@@ -64,7 +64,7 @@ public class MeiTuan03 {
             PriorityQueue<Integer> queue= new PriorityQueue<>(list.get(i));
             int t=queue.size();
             for (int k=0;k<t;k++){
-                System.out.print(queue.poll());
+                System.out.print(queue.poll()+" ");
             }
             System.out.println();
 
