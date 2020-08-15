@@ -25,6 +25,9 @@ public class Main {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
         for (int i = 1; i < input; i++) {
             List<Integer> list = new ArrayList<Integer>();
+            if (i * 4 > input){
+                break;
+            }
             int target = nixu(i);
             if (i*4 == target){
                 list.add(i);
@@ -33,12 +36,14 @@ public class Main {
             }
         }
         return lists;
-
     }
 
     private int nixu(int i){
-        StringBuffer temp = new StringBuffer();
-        temp.append(i);
-        return Integer.parseInt(String.valueOf(temp.reverse()));
+        int res = 0;
+        while (i!=0){
+            res = res * 10 + i % 10;
+            i /= 10;
+        }
+        return res;
     }
 }
