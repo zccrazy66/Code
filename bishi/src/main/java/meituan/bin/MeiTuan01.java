@@ -6,6 +6,7 @@ import java.util.*;
  * Created by 林松斌的船 on 2020/8/15.
  */
 public class MeiTuan01 {
+    public static void main(String[] args){
         public static void main(String[] args){
             Scanner s=new Scanner(System.in);
             int n=s.nextInt();
@@ -83,5 +84,9 @@ public class MeiTuan01 {
                 }
                 System.out.println();
             }
+
+
+
+
         }
     }
