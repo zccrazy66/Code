@@ -7,7 +7,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         HashMap<String, LinkedList<String>> map = new HashMap<>();
 
-
         int n = scanner.nextInt();
         scanner.nextLine();
         for (int i = 0; i < n; i++) {
@@ -22,11 +21,7 @@ public class Main {
             }
 
         }
-
-
         PriorityQueue<String> queue = new PriorityQueue<>(Comparator.comparingInt(o -> map.get(o).size()));
-
-
         for (String s : map.keySet()) {
             queue.add(s);
         }
@@ -41,15 +36,11 @@ public class Main {
                 LinkedList<String> list = map.get(s);
                 String temp = list.removeFirst();
                 if (list.size()!=0) queue.add(s);
-
-
                 while (!temp.equals(start)) {
                     temp = map.get(temp).removeFirst();
                 }
-
                 res++;
             }
-
         }
         System.out.println(res);
     }
