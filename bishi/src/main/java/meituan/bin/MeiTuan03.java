@@ -63,15 +63,25 @@ public class MeiTuan03 {
             list.add(set);
         }
         System.out.println(list.size());
+        List<Queue<Integer>> reslist=new ArrayList<>();
+        int[] a=new int[list.size()];
+        HashMap<Integer,Integer> hashMap=new HashMap();
         for (int i=0;i<list.size();i++){
             PriorityQueue<Integer> queue= new PriorityQueue<>(list.get(i));
+            reslist.add(queue);
+            hashMap.put(queue.peek(),i);
+            a[i]=queue.peek();
+        }
+        Arrays.sort(a);
+
+        for (int i=0;i<a.length;i++){
+            int d=hashMap.get(a[i]);
+            PriorityQueue<Integer> queue= new PriorityQueue<>(reslist.get(d));
             int t=queue.size();
             for (int k=0;k<t;k++){
                 System.out.print(queue.poll()+" ");
             }
             System.out.println();
-
-
         }
 
 
