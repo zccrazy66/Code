@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="bishi" target="8" />
+      <module name="bishi" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
