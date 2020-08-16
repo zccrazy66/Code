@@ -12,9 +12,9 @@ public class DaJiang {
         int k=s.nextInt();
         DaJiang daJiang=new DaJiang();
         String str2=daJiang.help(str,k);
-        System.out.println(str2);
+      //  System.out.println(str2);
         while (str2.charAt(0)=='0'&&str2.length()>1){
-            System.out.println("2");
+           // System.out.println("2");
             str2=str2.substring(1,str2.length());
 
         }
@@ -25,6 +25,9 @@ public class DaJiang {
                // System.out.println(str);
                 return str;
             }
+           if (k==str.length()){
+               return "";
+           }
             int min=str.charAt(0)-'0';
             int index=0;
             for(int i=1;i<=k;i++){
