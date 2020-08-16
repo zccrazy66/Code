@@ -11,7 +11,14 @@ public class DaJiang {
         String str=s.nextLine();
         int k=s.nextInt();
         DaJiang daJiang=new DaJiang();
-        System.out.println(daJiang.help(str,k));
+        String str2=daJiang.help(str,k);
+        System.out.println(str2);
+        while (str2.charAt(0)=='0'&&str2.length()>1){
+            System.out.println("2");
+            str2=str2.substring(1,str2.length());
+
+        }
+        System.out.println(str2);
     }
    public String help(String str,int k){
             if (k==0){
