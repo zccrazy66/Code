@@ -15,20 +15,25 @@ public class QiAnXin {
     }
     public String help(String str){
         String[] strings=str.split(" ");
+        for (int i=0;i<str.length();i++){
+
+        }
         String[] res=new String[strings.length];
         System.out.println(Arrays.toString(strings));
         int n=0;int len=strings.length;
         int j=0;
+        String pre=null;
         while (n<len){
             if (strings[n].equals("redo")){
+                res[j]=pre;
                 j++;
             }
             else if (strings[n].equals("undo")){
-                j--;
+                pre=res[--j];
 
             }
             else {
-                System.out.println(n+"+"+j);
+                //System.out.println(n+"+"+j);
                 res[j]=strings[n];
                 j++;
             }
