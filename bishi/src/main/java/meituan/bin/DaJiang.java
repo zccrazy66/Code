@@ -8,38 +8,32 @@ import java.util.Scanner;
 public class DaJiang {
     public static void main(String[] args){
         Scanner s=new Scanner(System.in);
-        String str=s.nextLine();
-        int k=s.nextInt();
-        DaJiang daJiang=new DaJiang();
-        String str2=daJiang.help(str,k);
-      //  System.out.println(str2);
-        while (str2.charAt(0)=='0'&&str2.length()>1){
-           // System.out.println("2");
-            str2=str2.substring(1,str2.length());
 
+        int n=s.nextInt();
+        int x=s.nextInt();
+        int[] weight=new int[n];
+        int[] value=new int[n];
+        for (int i=0;i<n;i++){
+            value[i]=s.nextInt();
+            weight[i]=s.nextInt();
         }
-        System.out.println(str2);
+        DaJiang daJiang02=new DaJiang();
+        System.out.println(daJiang02.help(x,n,weight,value));
+
     }
-   public String help(String str,int k){
-            if (k==0){
-               // System.out.println(str);
-                return str;
+    public  int help(int V,int N,int[] weight,int[] value){
+
+        int[][] dp = new int[N+1][V+1];
+        for(int i=1;i<N+1;i++){
+            for(int j=1;j<V+1;j++){
+                if(weight[i-1] > j)
+                    dp[i][j] = dp[i-1][j];
+                else
+                    dp[i][j] = Math.max(dp[i-1][j],dp[i-1][j-weight[i-1]]+value[i-1]);
             }
-           if (k==str.length()){
-               return "";
-           }
-            int min=str.charAt(0)-'0';
-            int index=0;
-            for(int i=1;i<=k;i++){
-                if (min>str.charAt(i)-'0'){
-                    min=str.charAt(i)-'0';
-                    index=i;
-                }
-            }
-            StringBuffer stringBuffer=new StringBuffer();
-                stringBuffer.append(min);
-                // System.out.println(str.substring(index+1));
-           return stringBuffer.append(help(str.substring(index+1),k-index)).toString();
-   }
+        }
+        int maxValue = dp[N][V];
+        return maxValue;
+    }
 
 }
