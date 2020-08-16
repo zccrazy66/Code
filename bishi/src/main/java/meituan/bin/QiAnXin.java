@@ -1,7 +1,7 @@
 package Code.bishi.src.main.java.meituan.bin;
 
-import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * Created by 林松斌的船 on 2020/8/16.
@@ -15,21 +15,19 @@ public class QiAnXin {
     }
     public String help(String str){
         String[] strings=str.split(" ");
-        for (int i=0;i<str.length();i++){
-
-        }
         String[] res=new String[strings.length];
-        System.out.println(Arrays.toString(strings));
+        Stack<String> stack=new Stack<>();
+       // System.out.println(Arrays.toString(strings));
         int n=0;int len=strings.length;
         int j=0;
         String pre=null;
         while (n<len){
             if (strings[n].equals("redo")){
-                res[j]=pre;
+                res[j]=stack.pop();
                 j++;
             }
             else if (strings[n].equals("undo")){
-                pre=res[--j];
+                stack.push(res[--j]);
 
             }
             else {
