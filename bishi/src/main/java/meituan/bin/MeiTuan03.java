@@ -1,9 +1,33 @@
 package meituan.bin;
 
+import meituan.zczc.WorkflowNode;
+
 import java.util.*;
 
-
+/**
+ * Created by 林松斌的船 on 2020/8/15.
+ */
 public class MeiTuan03 {
+    int resmax=Integer.MIN_VALUE;
+    public static void main(String args[]) {
+        Scanner cin = new Scanner(System.in);
+        Main main=new Main();
+        while (cin.hasNext()) {
+            WorkflowNode node = WorkflowNode.load(cin.next());
+            main.help(node,node.timeoutMillis);
+        }
+        System.out.println(main.resmax);
+
+
+    }
+    public void help(WorkflowNode workflowNode,int time){
+        if (workflowNode.nextNodes==null){
+            resmax=Math.max(resmax,time);
+        }
+        for (int i=0;i<workflowNode.nextNodes.size();i++){
+            help(workflowNode.nextNodes.get(i),time+workflowNode.nextNodes.get(i).timeoutMillis);
+        }
+    }
     public static void main(String[] args){
         Scanner s=new Scanner(System.in);
         int n=s.nextInt();
@@ -28,6 +52,9 @@ public class MeiTuan03 {
             map.put(b,list2);
             // System.out.println(b+"+"+Arrays.toString(list2.toArray()));
         }
+        Integer[] integers= integerList.toArray(new Integer[integerList.size()]);
+          Arrays.sort(integers);
+          integerList=new ArrayList<Integer>(Arrays.asList(integers));
         // System.out.println(Arrays.toString(map.get(1).toArray()));
         List<Set<Integer>> list=new ArrayList<>();
         for (int i=0;i<integerList.size();i++){
@@ -54,19 +81,29 @@ public class MeiTuan03 {
                     }
                 }
             }
-            System.out.println(Arrays.toString(set.toArray()));
+          //  System.out.println(Arrays.toString(set.toArray()));
             list.add(set);
         }
         System.out.println(list.size());
+        List<Queue<Integer>> reslist=new ArrayList<>();
+        int[] a=new int[list.size()];
+        HashMap<Integer,Integer> hashMap=new HashMap();
         for (int i=0;i<list.size();i++){
             PriorityQueue<Integer> queue= new PriorityQueue<>(list.get(i));
+            reslist.add(queue);
+            hashMap.put(queue.peek(),i);
+            a[i]=queue.peek();
+        }
+        Arrays.sort(a);
+
+        for (int i=0;i<a.length;i++){
+            int d=hashMap.get(a[i]);
+            PriorityQueue<Integer> queue= new PriorityQueue<>(reslist.get(d));
             int t=queue.size();
             for (int k=0;k<t;k++){
-                System.out.print(queue.poll());
+                System.out.print(queue.poll()+" ");
             }
             System.out.println();
-
-
         }
 
 
