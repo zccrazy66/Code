@@ -1,4 +1,4 @@
-package meituan.tx;
+package main.java.meituan.tx;
 
 /**
  * @author xin Tan
