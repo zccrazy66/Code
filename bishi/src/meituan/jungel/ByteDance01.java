@@ -29,21 +29,22 @@ public class ByteDance01 {
      * @param tin
      * @return
      */
-    public TreeNode reConstructBinaryTree(int[] pre,int[] tin) {
-        if (pre.length == 0 || tin.length == 0){
+    public TreeNode reConstructBinaryTree(int[] pre, int[] tin) {
+        if (pre.length == 0 || tin.length == 0) {
             return null;
         }
         TreeNode root = new TreeNode(pre[0]);
         // 找到 第一个元素在 tin 中的位置
         int i = getIndex(tin, pre[0]);
-        root.left = reConstructBinaryTree(Arrays.copyOfRange(pre, 1, i+1), Arrays.copyOfRange(tin, 0, i));
-        root.right = reConstructBinaryTree(Arrays.copyOfRange(pre, i+1, pre.length), Arrays.copyOfRange(tin, i+1, tin.length));
+        root.left = reConstructBinaryTree(Arrays.copyOfRange(pre, 1, i + 1), Arrays.copyOfRange(tin, 0, i));
+        root.right = reConstructBinaryTree(Arrays.copyOfRange(pre, i + 1, pre.length), Arrays.copyOfRange(tin, i + 1, tin.length));
         return root;
     }
-    private int getIndex(int[] array, int value){
+
+    private int getIndex(int[] array, int value) {
         int index = 0;
-        for (int i = 0; i < array.length; i++){
-            if (array[i] == value){
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == value) {
                 index = i;
                 break;
             }
@@ -54,21 +55,21 @@ public class ByteDance01 {
     /**
      * 输入根节点返回叶子节点个数
      */
-
     private int yeziNum(TreeNode root) {
-        if (root!=null) {
+        if (root != null) {
             int l = yeziNum(root.left);
             int r = yeziNum(root.right);
-            if (l==0&&r==0){
+            if (l == 0 && r == 0) {
                 return 1;
-            }else {
-                return l+r;
+            } else {
+                return l + r;
             }
 
-        }else {
+        } else {
             return 0;
         }
     }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();

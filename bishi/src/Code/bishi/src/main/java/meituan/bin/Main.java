@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Created by 林松斌的船 on 2020/8/16.
  */
-public class DaJiang {
+public class Main {
     public static void main(String[] args){
         Scanner s=new Scanner(System.in);
 
@@ -17,7 +17,7 @@ public class DaJiang {
             value[i]=s.nextInt();
             weight[i]=s.nextInt();
         }
-        DaJiang daJiang02=new DaJiang();
+        Code.bishi.src.main.java.meituan.bin.Main daJiang02=new Code.bishi.src.main.java.meituan.bin.Main();
         System.out.println(daJiang02.help(x,n,weight,value));
 
     }
