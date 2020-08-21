@@ -1,11 +1,11 @@
+package main.java.笔试.joey;
+
+
 import java.util.Scanner;
 import java.util.Arrays;
 
-/**
- * @author JoeyChen
- * @data 2020/8/19 19:09
- */
-public class Main {
+
+public class huawei01 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

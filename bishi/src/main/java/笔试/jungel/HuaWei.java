@@ -1,4 +1,4 @@
-package meituan.jungel;
+package main.java.笔试.jungel;
 
 import java.util.Scanner;
 

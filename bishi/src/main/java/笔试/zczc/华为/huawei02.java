@@ -1,4 +1,4 @@
-package meituan.zczc;
+package main.java.笔试.zczc.华为;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -21,9 +21,9 @@ public class huawei02 {
         int length = input.length;
         if (length < 1) return 0;
         Arrays.sort(input);
-        int mid = 1; // 中间值
-        int res = 1; // 返回值
-        int count = 0; // 中间计数，有几个？
+        int mid = 1;
+        int res = 1;
+        int count = 0;
         int zancun = 1;
         for (int i = 1; i < length; i++) {
             int temp = 0;
@@ -38,6 +38,15 @@ public class huawei02 {
         return res;
     }
 
+
+    private static int CNM(int big,int small){
+        int da = 1;
+        for (int i = 0; i < small; i++) {
+            da  *= big;
+            big--;
+        }
+        return da;
+    }
 
 
 }

@@ -1,4 +1,5 @@
-package meituan.joey;
+package main.java.笔试.joey;
+
 
 public class Test {
     public static void main(String[] args) {

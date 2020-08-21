@@ -1,4 +1,4 @@
-package Code.bishi.src.main.java.meituan.bin;
+package main.java.笔试.bin;
 
 import java.util.Scanner;
 

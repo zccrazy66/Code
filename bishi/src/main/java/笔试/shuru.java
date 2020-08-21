@@ -1,4 +1,4 @@
-package meituan;
+package main.java.笔试;
 
 import java.util.Scanner;
 
