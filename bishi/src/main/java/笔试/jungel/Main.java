@@ -18,7 +18,6 @@ public class Main {
         }
 
         int res = 0;
-
         Main main = new Main();
         for (String s : list) {
             if (main.isValid(s)) {
