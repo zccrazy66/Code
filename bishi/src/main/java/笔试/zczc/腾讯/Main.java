@@ -14,8 +14,7 @@ public class Main {
         while (Q > 0){
             int l = in.nextInt();
             int r = in.nextInt();
-            System.out.println(s.substring(l - 1,r));
-            list.add(minCut(s.substring(l,r)));
+            list.add(minCut(s.substring(l - 1,r)));
             Q--;
         }
         for (int i = 0; i < list.size(); i++) {
@@ -33,12 +32,11 @@ public class Main {
         }
 
         int[] dp = new int[len];
-
         for (int i = 0; i < len; i++) {
             dp[i] = i;
         }
-
         boolean[][] checkPalindrome = new boolean[len][len];
+
         for (int right = 0; right < len; right++) {
             for (int left = 0; left <= right; left++) {
                 if (s.charAt(left) == s.charAt(right) && (right - left <= 2 || checkPalindrome[left + 1][right - 1])) {
