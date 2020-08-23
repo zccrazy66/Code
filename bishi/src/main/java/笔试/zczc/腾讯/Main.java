@@ -1,6 +1,7 @@
 package main.java.笔试.zczc.腾讯;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,36 +23,27 @@ public class Main {
         }
     }
 
-        public static int minCut(String s){
-            int n = s.length();
-            boolean[][] check = new boolean[n + 1][n + 1];
-            int[] dp = new int[n + 1];
-            char[] cs = s.toCharArray();
-            int j;
-            //初始化， 把所有是回文串的放入check 数组， 根据i和j就能判断子串s[i,j]是否回文串
-            for(int len = 1; len <= n; len++){
-                for(int i = 1; i + len - 1 <= n; i++){
-                    j = i + len - 1;
-                    if(len == 1)    {
-                        check[i][j] = true;
-                    }else{
-                        if(cs[i - 1] == cs[j - 1]) {
-                            check[i][j] = len == 2 ? true: check[i + 1][j - 1];
-                        }
-                    }
-                }
-            }
-            dp[0] = -1;
-            for(int i = 1; i <= n; i++){
-                dp[i] = dp[i - 1] + 1;
-                for(int k = 1; k < i; k++){
-                    if(check[k][i]){
-                        dp[i] = Math.min(dp[i], dp[k - 1] + 1);
-                    }
-                }
-            }
-            return dp[n] + 1;
+    public static int minCut(String s) {
+        if(s == null || s.length() <= 1)
+            return 0;
+        int len = s.length();
+        int dp[] = new int[len];
+        Arrays.fill(dp, len-1);
+        for(int i = 0; i < len; i++){
+            // 注意偶数长度与奇数长度回文串的特点
+            mincutHelper(s , i , i , dp);  // 奇数回文串以1个字符为中心
+            mincutHelper(s, i , i+1 , dp); // 偶数回文串以2个字符为中心
         }
+        return dp[len-1] + 1;
+    }
+    private static void mincutHelper(String s, int i, int j, int[] dp){
+        int len = s.length();
+        while(i >= 0 && j < len && s.charAt(i) == s.charAt(j)){
+            dp[j] = Math.min(dp[j] , (i==0?-1:dp[i-1])+1);
+            i--;
+            j++;
+        }
+    }
 
 
 }
