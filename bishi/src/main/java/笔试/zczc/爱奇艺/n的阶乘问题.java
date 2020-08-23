@@ -15,7 +15,6 @@ public class n的阶乘问题 {
         if (input < 5){
             return 0;
         }
-
         for (int i = 5; i <= input; i++) {
             int num = i;
             while ((num % 5 == 0) && (num >= 5)){
@@ -23,9 +22,7 @@ public class n的阶乘问题 {
                 temp++;
             }
         }
-
         return temp;
-
     }
 
 

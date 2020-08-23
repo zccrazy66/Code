@@ -2,6 +2,10 @@ package main.java.笔试.zczc.腾讯;
 
 import java.util.Scanner;
 
+/**
+ * @author JoeyChen
+ * @data 2020/8/23 21:14
+ */
 public class disi {
     static int res = 0;
     public static void main(String[] args) {
@@ -11,47 +15,25 @@ public class disi {
         for (int i = 0; i < n; i++) {
             arr[i] = scanner.nextInt();
         }
-        helper(arr, n);
+        res = helper(arr,1, n-1, 0);
         System.out.println(res);
     }
-    public static void helper(int[] arr, int n) {
-        if (n < 1) return;
-        if (n == 1) {
-            res++;
-            return;
-        }
-        if (n == 2) {
-            if (arr[0] == 1 && arr[1] == 1) {
-                res++;
-                return;
-            } else {
-                res += 2;
-                return;
+    public static int helper(int[] arr, int l, int r, int h) {
+        if (l > r) return res;
+        int minn = Integer.MAX_VALUE, ind = -1;
+        int sum = 0;
+        for (int i = l; i <= r; i++) {
+            if (arr[i] < minn) {
+                minn = arr[i];
+                ind = i;
             }
+            if (arr[i] > h)  sum++;
         }
-        int tmp_min = arr[0];
-        for (int i = 1; i < n; i++) {
-            if (tmp_min > arr[i]) tmp_min = arr[i];
-        }
-        res += tmp_min;
-        int cut_point = 0;
-
-        for (int i = 0; i < n; i++) {
-            if (arr[i] == tmp_min) {
-                cut_point = i;
-            }
-            arr[i] = arr[i] - tmp_min;
-        }
-        //分裂数组
-        int[] arr1 = new int[cut_point];
-        int[] arr2 = new int[n-cut_point-1];
-        for (int i = 0; i < cut_point; i++) {
-            arr1[i] = arr[i];
-        }
-        for (int i = 0; i < n-cut_point-1; i++) {
-            arr2[i] = arr[i+cut_point+1];
-        }
-        helper(arr1, cut_point);
-        helper(arr2, n-cut_point-1);
+        int num = minn - h;
+        int next_h = minn;
+        int res_l = helper(arr, l, ind-1, next_h);
+        int res_r = helper(arr, ind+1, r, next_h);
+        int res = Math.min(sum, res_l+res_r+num);
+        return res;
     }
 }
