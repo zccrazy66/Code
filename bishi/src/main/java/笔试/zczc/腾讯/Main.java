@@ -17,46 +17,42 @@ public class Main {
             list.add(minCut(s.substring(l - 1,r)));
             Q--;
         }
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
+        for (Object o : list) {
+            System.out.println(o);
         }
     }
 
 
 
     public static int minCut(String s) {
-        int len = s.length();
-        // 特判
-        if (len < 2) {
-            return 0;
-        }
-
-        int[] dp = new int[len];
-        for (int i = 0; i < len; i++) {
-            dp[i] = i;
-        }
-        boolean[][] checkPalindrome = new boolean[len][len];
-
-        for (int right = 0; right < len; right++) {
-            for (int left = 0; left <= right; left++) {
-                if (s.charAt(left) == s.charAt(right) && (right - left <= 2 || checkPalindrome[left + 1][right - 1])) {
-                    checkPalindrome[left][right] = true;
+        int n = s.length();
+        char[] arr = s.toCharArray();
+        int[] dp = new int[n+1];
+        dp[0] = -1;
+        boolean[][] isSymmetry = getSymmetry(arr);
+        for (int i=1; i<n; i++) {
+            dp[i+1] = 1 + dp[i];
+            for (int j=i-1; j>=0; j--)
+                if (isSymmetry[j][i]) {
+                    dp[i+1] = Math.min(dp[i+1], dp[j] + 1);
                 }
+        }
+        return dp[n] + 1;
+    }
+
+    static boolean[][]  getSymmetry(char[] arr) {
+        int n = arr.length;
+        boolean[][] ans = new boolean[n][n];
+        for (int k=0; k<2*n-3; k++) {
+            int left = k / 2;
+            int right = (k & 1) == 0 ? left + 1 : left + 2;
+            while (left >=0 && right < n) {
+                if (arr[left] == arr[right]) ans[left][right] = true;
+                else break;
+                left--;
+                right++;
             }
         }
-
-        for (int i = 1; i < len; i++) {
-            if (checkPalindrome[0][i]){
-                dp[i] = 0;
-                continue;
-            }
-
-            for (int j = 0; j < i; j++) {
-                if (checkPalindrome[j + 1][i]) {
-                    dp[i] = Math.min(dp[i], dp[j] + 1);
-                }
-            }
-        }
-        return dp[len - 1] + 1;
+        return ans;
     }
 }
