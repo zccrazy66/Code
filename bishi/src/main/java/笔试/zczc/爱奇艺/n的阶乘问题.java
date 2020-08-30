@@ -27,7 +27,4 @@ public class n的阶乘问题 {
         return temp;
 
     }
-
-
-
 }

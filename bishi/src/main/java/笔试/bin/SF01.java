@@ -1,6 +1,5 @@
 package Code.bishi.src.main.java.笔试.bin;
-import java.util.LinkedList;
-import java.util.List;
+
 import java.util.Scanner;
 
 /**6 3
@@ -12,62 +11,48 @@ public class SF01 {
         Scanner s=new Scanner(System.in);
         int n=s.nextInt();
         int k=s.nextInt();
-        List<Integer> list=new LinkedList<>();
+        int[] nums=new int[n];
         for (int i=0;i<n;i++){
-            list.add(s.nextInt());
+            nums[i]=s.nextInt();
         }
+        int max=0;
+        int sum=0;
+        int l=0,r=n-k;
+        int resl=l,resr=r;
+        for (int m=0;m<=r;m++){
+            sum+=nums[m];
+        }
+        max=sum;
+        while (r<n-1){
+           // System.out.println("123");
+            r++;
+            sum+=nums[r];
+            sum-=nums[l];
+            l++;
+            if (max<sum){
+                max=sum;
+                resl=l;
+                resr=r;
+            }
+        }
+       // System.out.println(sum);
         int res=0;
-        int reslen=Integer.MIN_VALUE;
-        while (list.size()>0){
-
-            int max = 0;
-            int sum = 0;
-            int l = 0, r = list.size() - k;
-            int resl = l, resr = r;
-            //System.out.println("k="+k+"size="+list.size());
-            for (int m = 0; m <= r; m++) {
-                sum += list.get(m);
-            }
-            max = sum;
-            while (r <= list.size() - 2) {
-                // System.out.println("123");
-                r++;
-                sum += list.get(r);
-                sum -= list.get(l);
-                l++;
-                if (max < sum) {
-                    max = sum;
-                    resl = l;
-                    resr = r;
-                }
-            }
-            // System.out.println("resl="+resl+"resr="+resr);
-            // System.out.println(max);
-            if (max==0){
-                double len=Math.ceil(list.size()/k);
-                reslen=Math.max(reslen,(int) len);
-                break;
-            }
-            res += max * max;
-            //  System.out.println(resl);
-
-            while (list.get(resl) == 0&&resl<resr) {
-                resl++;
-            }
-            while (list.get(resr) == 0&&resl<resr) {
-                resr--;
-            }
-            int len = resr - resl + 1;
-            for (int i=0;i<len;i++){
-                list.remove(resl);
-            }
-            // System.out.println("resl="+resl+"resr="+resr);
-            reslen=Math.max(reslen,len);
-            // System.out.println(len);
-            k--;
+        for (int i=0;i<resl;i++){
+            res+=nums[i]*nums[i];
         }
+        for (int i=resr+1;i<n;i++){
+            res+=nums[i]*nums[i];
+        }
+        res+=max*max;
+        while (nums[l]==0){
+            l++;
+        }
+        while (nums[r]==0){
+            r--;
+        }
+        int len=r-l+1;
         System.out.print(res+" ");
-        System.out.print(reslen);
+        System.out.print(len);
 
     }
 }

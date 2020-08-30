@@ -8,26 +8,26 @@ import java.util.Scanner;
 public class JD01 {
     public static void main(String[] args){
         Scanner s=new Scanner(System.in);
-        int n=s.nextInt();
-        n--;
+        int rem=s.nextInt();
+        rem--;
         int k=3;
         int i=0;
-        while (n>0){
-            n-=k;
+        while (rem>0){
+            rem-=k;
             k*=3;
             i++;
         }
         k/=3;
-        n+=k;
+        rem+=k;
         //  System.out.println(m);
         int[] nums = {2, 3, 5};
         StringBuffer res=new StringBuffer();
-        for (int j=i;j>0;j--){
+        for (int j= i;j>0;j--){
             int x=(int) Math.pow(3,j-1);
             // System.out.println("x="+x);
             //  System.out.println((m/x)-1);
-            res.append(nums[(n/x)]);
-            n=n%x;
+            res.append(nums[(rem/x)]);
+            rem=rem%x;
         }
 //        if (m==0){
 //            for (int j=0;j<i;j++){
