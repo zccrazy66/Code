@@ -1,69 +1,46 @@
-package main.java.笔试.tx;
-
-import java.util.Arrays;
-import java.util.Scanner;
-
-/**
- * @author xin Tan
- * @create 2020-08-30 20:00
- */
-public class 小红书2 {
-
-    public static int maxBoxes(int[][] boxes) {
-        Arrays.sort(boxes, (arr1, arr2) -> {
-            if (arr1[0] == arr2[0]) {
-                return arr2[1] - arr1[1];
-            } else {
-                return arr1[0] - arr2[0];
-            }
-        });
-
-        int[] secondDim = new int[boxes.length];
-        for (int i = 0; i < boxes.length; ++i) secondDim[i] = boxes[i][1];
-        return lengthOfLIS(secondDim);
-    }
-
-
-    public static int lengthOfLIS(int[] nums) {
-        int[] dp = new int[nums.length];
-        int len = 0;
-        for (int num : nums) {
-            int i = Arrays.binarySearch(dp, 0, len, num);
-            if (i < 0) {
-                i = -(i + 1);
-            }
-            dp[i] = num;
-            if (i == len) {
-                len++;
-            }
-        }
-        return len;
-    }
-
-    /******************************结束写代码******************************/
-
-
-    public static void main(String[] args){
-        Scanner in = new Scanner(System.in);
-        int res;
-        int _boxes_rows = 0;
-        int _boxes_cols = 0;
-        _boxes_rows = Integer.parseInt(in.nextLine().trim());
-        _boxes_cols = Integer.parseInt(in.nextLine().trim());
-
-        int[][] _boxes = new int[_boxes_rows][_boxes_cols];
-        for(int _boxes_i=0; _boxes_i<_boxes_rows; _boxes_i++) {
-            for(int _boxes_j=0; _boxes_j<_boxes_cols; _boxes_j++) {
-                _boxes[_boxes_i][_boxes_j] = in.nextInt();
-
-            }
-        }
-
-        if(in.hasNextLine()) {
-            in.nextLine();
-        }
-        res = maxBoxes(_boxes);
-        System.out.println(res);
-
-    }
-}
+//#include <bits/stdc++.h>
+//        #define cls(a,b) memset(a,b,sizeof(a))
+//        using namespace std;
+//        const int maxn=20;
+//
+//        int n,m,r,c,ans,mp[maxn][maxn];
+//        vector<int> row;
+//        int dp[maxn][maxn],extra[maxn],cost[maxn][maxn];
+//
+//        inline void calc(){
+//        cls(dp,0x3f),cls(extra,0),cls(cost,0);
+//        for(int i=1;i<=m;i++)for(int j=i+1;j<=m;j++)for(auto ro:row)cost[i][j]+=abs(mp[ro][i]-mp[ro][j]);
+//        for(int co=1;co<=m;co++)for(int i=0;i<row.size()-1;i++)extra[co]+=abs(mp[row[i]][co]-mp[row[i+1]][co]);
+//        for(int i=0;i<=m;i++)dp[i][0]=0;
+//        for(int i=1;i<=m;i++)
+//        for(int j=1;j<=i;j++)
+//        for(int k=j-1;k<i;k++)
+//        dp[i][j]=min(dp[i][j],dp[k][j-1]+cost[k][i]+extra[i]);
+//        for(int i=1;i<=m;i++)ans=min(ans,dp[i][c]);
+//        }
+//        void dfs(int now){
+//        if(row.size()>r||row.size()+n-now+1<r)return;
+//        if(now==n+1){
+//        calc();
+//        return;
+//        }
+//        row.push_back(now);
+//        dfs(now+1);
+//        row.pop_back();
+//        dfs(now+1);
+//        }
+//
+//        void read_and_parse(){
+//        scanf("%d%d%d%d",&n,&m,&r,&c);
+//        for(int i=1;i<=n;i++)for(int j=1;j<=m;j++)scanf("%d",&mp[i][j]);
+//        }
+//        void solve(){
+//        ans=1<<30;
+//        dfs(1);
+//        printf("%d\n",ans);
+//        }
+//        int main(){
+//        read_and_parse();
+//        solve();
+//        return 0;
+//        }
