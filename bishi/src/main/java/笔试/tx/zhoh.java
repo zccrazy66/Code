@@ -5,4 +5,7 @@ package main.java.笔试.tx;
  * @create 2020-08-30 21:23
  */
 public class zhoh {
+    public static void main(String[] args) {
+
+    }
 }
