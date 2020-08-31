@@ -1,37 +1,33 @@
 package main.java.笔试.tx;
 
 
-/**
- * @author xin Tan
- * @create 2020-08-31 19:46
- */
-public class wuba1 {
-
-    public static  int question (int a, int b) {
-        int n = 0;
-        for (int i = 0; i <=500 ; i++) {
-            if (isCompSqrt(i + a) && isCompSqrt(i + b))
-            {
-                n = i;
-                break;
-            }
-        }
-        return n;
-    }
-
-    private static boolean isCompSqrt(int p)
-    {
-        boolean flag = false;
-        double fsqrt = Math.sqrt(p);
-        int q = (int) fsqrt;
-
-        if (p == Math.pow(q, 2))
-        {
-            flag = true;
-        }
-        return flag;
-    }
-}
+//public class wuba1 {
+//
+//    public static  int question (int a, int b) {
+//        int n = 0;
+//        for (int i = 0; i <=500 ; i++) {
+//            if (isCompSqrt(i + a) && isCompSqrt(i + b))
+//            {
+//                n = i;
+//                break;
+//            }
+//        }
+//        return n;
+//    }
+//
+//    private static boolean isCompSqrt(int p)
+//    {
+//        boolean flag = false;
+//        double fsqrt = Math.sqrt(p);
+//        int q = (int) fsqrt;
+//
+//        if (p == Math.pow(q, 2))
+//        {
+//            flag = true;
+//        }
+//        return flag;
+//    }
+//}
 
 
 
