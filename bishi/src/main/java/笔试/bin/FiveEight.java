@@ -1,7 +1,6 @@
 package Code.bishi.src.main.java.笔试.bin;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,40 +10,7 @@ import java.util.List;
  * Created by 林松斌的船 on 2020/8/31.
  */
 public class FiveEight {
-    public static void main(String[] args){
-        String[] a={"a", "adb", "gae", "ddd", "you", "better", "aaaaa"};
-        ArrayList<String> alist=new ArrayList<>();
-        alist.add("a");
-        alist.add("adb");
-        alist.add("gae");
-        alist.add("ddd");
-        alist.add("you");
-        alist.add("better");
-        alist.add("aaaaa");
 
-        ArrayList<String> blist=new ArrayList<>();
-        alist.add("a1");
-        alist.add("adb");
-        alist.add("g2ae");
-        alist.add("dd1d");
-        alist.add("you");
-        alist.add("better");
-        alist.add("aaabaa");
-        ArrayList<String> clist=new ArrayList<>();
-        alist.add("2a1");
-        alist.add("adb2");
-        alist.add("g2ae");
-        alist.add("ddd");
-        alist.add("you");
-        alist.add("better");
-        alist.add("aaabaa");
-        ArrayList<ArrayList<String>> lists=new ArrayList<>();
-        ArrayList<ArrayList<String>> lists2=new ArrayList<>();
-        lists.add(alist);
-        lists.add(blist);
-        lists.add(clist);
-        System.out.println(Arrays.toString(findCommonString(lists2).toArray(new String[lists.size()])));
-    }
     public static ArrayList<String> findCommonString (ArrayList<ArrayList<String>> values) {
         if(values.size()==0)return null;
         ArrayList<String> res=new ArrayList<>();
