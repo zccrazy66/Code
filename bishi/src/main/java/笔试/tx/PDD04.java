@@ -3,9 +3,9 @@ package main.java.笔试.tx;
 import java.util.HashMap;
 import java.util.Scanner;
 
-/**
- * @author xin Tan
- * @create 2020-09-01 20:06
+/*
+ *复杂，只有50%正确
+ * 运行超时
  */
 public class PDD04 {
     public static void main(String[] args) {
