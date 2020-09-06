@@ -19,7 +19,7 @@ public class First {
         isVisted = new boolean[m];
         TreeSet<Integer>[] people = new TreeSet[m];
 
-        int index_0 = 0;
+        int index_0 = -1;
         for (int i = 0; i < m; i++) {
 
             int k= scanner.nextInt();
@@ -33,6 +33,10 @@ public class First {
             }
         }
 
+//        if (index_0==-1) {
+//            System.out.println(1);
+//            return;
+//        }
         sets = people;
         dfs(index_0);
 
@@ -70,7 +74,7 @@ public class First {
     private static List<Integer> getNear(int val) {
         ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < sets.length; i++) {
-            if (sets[i].contains(val)&&!isVisted[i]) {
+            if (!isVisted[i]&&sets[i].contains(val)) {
                 list.add(i);
             }
         }
