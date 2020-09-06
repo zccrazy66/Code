@@ -7,37 +7,31 @@ import java.util.Scanner;
 
 public class Second {
 
-    static LinkedList<Integer>[] mat;
-    static int row;
+    static LinkedList<Integer>[] lists;
+    static int q;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         LinkedList<Integer>[] list = new LinkedList[n];
-        for (int i = 0; i < n; i++) {
-            list[i] = new LinkedList<>();
+        for (int i=0; i<n; i++) {
+            list[i] = new LinkedList<Integer>();
         }
-        for (int i = 0; i < n; i++) {
-
-            for (int j = 0; j < (2 * i + 1); j++) {
-                int anInt = scanner.nextInt();
-                list[i].addLast(anInt);
+        for (int i=0; i<n; i++) {
+            for (int j=0; j<=2*i; j++) {
+                int a = scanner.nextInt();
+                list[i].addLast(a);
             }
 
         }
-        mat = list;
-        row = n;
-        int res = dfs(0,0);
+        lists = list;
+        q=n;
+        int res = help(0,0);
         System.out.println(res);
-
     }
 
-    private static int dfs(int x,int y) {
-
-        if (x==row-1) return mat[x].get(y);
-
-        int max = Math.max(dfs(x + 1, y), dfs(x + 1, y + 1));
-        return Math.max(max,dfs(x+1,y+2))+mat[x].get(y);
-
-
+    private static int help(int x,int y) {
+        if (x==q-1) return lists[x].get(y);
+        int res=Math.max(help(x + 1, y), help(x+1, y+1));
+        return Math.max(res,help(x+1,y+2))+lists[x].get(y);
     }
 }

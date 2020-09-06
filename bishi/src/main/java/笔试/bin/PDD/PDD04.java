@@ -29,7 +29,7 @@ public class PDD04 {
             }
             System.out.println(N - ans);
         }
-
+            //快速指数
         public static long pw(long a, long b) {
             long ans = 1, base = a;
             while (b != 0) {
