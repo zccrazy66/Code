@@ -102,7 +102,7 @@ class S {
         this.s = s;
         this.t = t;
     }
-
     String s;
     int t;
+
 }
