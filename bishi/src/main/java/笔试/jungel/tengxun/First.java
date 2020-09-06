@@ -1,14 +1,11 @@
 package 笔试.jungel.tengxun;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.TreeSet;
+import java.util.*;
 
 public class First {
 
 
-    private static TreeSet<Integer>[] sets;
+    private static LinkedList<LinkedList<Integer>> sets;
     private static boolean[] isVisted;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -17,32 +14,32 @@ public class First {
 
         int[] arr = new int[n];
         isVisted = new boolean[m];
-        TreeSet<Integer>[] people = new TreeSet[m];
+        LinkedList<LinkedList<Integer>> people = new LinkedList<>();
 
         int index_0 = -1;
         for (int i = 0; i < m; i++) {
 
             int k= scanner.nextInt();
 
-            people[i]=new TreeSet<>();
+            LinkedList<Integer> temp = new LinkedList<>();
+            people.addLast(temp);
             for (int j = 0; j < k; j++) {
                 int p = scanner.nextInt();
                 if (p==0) index_0=i;
-                people[i].add(p);
-
+                people.get(i).addLast(p);
             }
         }
 
-//        if (index_0==-1) {
-//            System.out.println(1);
-//            return;
-//        }
+        if (index_0==-1) {
+            System.out.println(1);
+            return;
+        }
         sets = people;
         dfs(index_0);
 
         for (int i = 0; i < m; i++) {
             if (isVisted[i]) {
-                for (Integer person : people[i]) {
+                for (Integer person : people.get(i)) {
                     arr[person]++;
                 }
             }
@@ -60,7 +57,7 @@ public class First {
     private static void dfs(int index) {
 
         isVisted[index]=true;
-        for (Integer integer : sets[index]) {
+        for (Integer integer : sets.get(index)) {
 
             List<Integer> nears = getNear(integer);
 
@@ -73,8 +70,8 @@ public class First {
 
     private static List<Integer> getNear(int val) {
         ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < sets.length; i++) {
-            if (!isVisted[i]&&sets[i].contains(val)) {
+        for (int i = 0; i < sets.size(); i++) {
+            if (!isVisted[i]&&sets.get(i).contains(val)) {
                 list.add(i);
             }
         }
