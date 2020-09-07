@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class 走台阶 {
 
-    public static void main(String[] args) {
+    public static void main(String[] ar gs) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         int m = in.nextInt();
