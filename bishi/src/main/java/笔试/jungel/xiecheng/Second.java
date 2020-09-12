@@ -2,9 +2,7 @@ package 笔试.jungel.xiecheng;
 
 import com.alibaba.fastjson.JSON;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 //a bc d eag f
 public class Second {
@@ -26,6 +24,7 @@ public class Second {
         String[] split = s.split(" ");
 
         List<Str> str = new Second().getStr(split);
+        Collections.sort(str, Comparator.comparing(o -> o.val));
         for (Str str1 : str) {
             System.out.print(str1.val);
             if (str1.isLoop) System.out.print("--circular dependency");
