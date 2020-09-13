@@ -20,9 +20,10 @@ public class DD000001 {
                 res.append(str.charAt(i+j));
             }
          }
-         for (;i<str.length();i++){
-             res.append(str.charAt(i));
-         }
+        for (int j=str.length()-1;j>=i;j--){
+            // System.out.println(j);
+            res.append(str.charAt(j));
+        }
        // res.append(str);
         System.out.println(res);
 
