@@ -15,7 +15,8 @@ public class Three {
         }
     }
 
-
+    private static Monster[] arr;
+    private static int size;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
@@ -30,18 +31,17 @@ public class Three {
 
         // 窗口大小
         int windows = y*2;
-
+        arr = monsters;
+        size=n;
         int res=0;
+
         while (getIndex(monsters)!=-1) {
 
             int index = getIndex(monsters);
+            int hp = arr[index].HP;
+            getList(index,windows,hp);
 
-            LinkedList<Integer> list = getList(index,windows,monsters);
-            int hp = monsters[index].HP;
             res=res+hp;
-            for (Integer integer : list) {
-                monsters[integer].HP=monsters[integer].HP-hp;
-            }
 
         }
 
@@ -49,14 +49,15 @@ public class Three {
 
     }
 
-    private static LinkedList<Integer> getList(int index, int windows,Monster[] monsters) {
-        LinkedList<Integer> list = new LinkedList<>();
-        int n = monsters.length;
-        for (int i = index; i < n; i++) {
-            if (monsters[i].X>=monsters[index].X&&(monsters[i].X<=monsters[index].X+windows)&&monsters[i].HP>0) list.addLast(i);
+    private static void  getList(int index, int windows,int hp) {
+
+        for (int i = index; i < size; i++) {
+            if (arr[i].X>=arr[index].X&&(arr[i].X<=arr[index].X+windows)&&arr[i].HP>0) {
+                arr[i].HP=arr[i].HP-hp;
+            }
         }
 
-        return list;
+
     }
 
     /**
