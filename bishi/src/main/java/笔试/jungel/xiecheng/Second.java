@@ -24,7 +24,7 @@ public class Second {
         String[] split = s.split(" ");
 
         List<Str> str = new Second().getStr(split);
-        Collections.sort(str, Comparator.comparing(o -> o.val));
+
         for (Str str1 : str) {
             System.out.print(str1.val);
             if (str1.isLoop) System.out.print("--circular dependency");

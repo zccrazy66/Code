@@ -1,8 +1,6 @@
 package 笔试.jungel.zhongxing;
 
-import com.alibaba.fastjson.JSON;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 // 7

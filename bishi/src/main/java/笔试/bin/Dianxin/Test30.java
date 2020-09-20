@@ -1,6 +1,5 @@
-package main.java.笔试.bin.Dianxin;
+package bishi.src.main.java.笔试.bin.Dianxin;
 
-import java.util.Scanner;
 import java.util.Stack;
 
 /**第三题？？？？？？
@@ -8,26 +7,15 @@ import java.util.Stack;
  */
 public class Test30 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        scanner.nextLine();
-        String[] input = new String[n];
-        for (int i = 0; i < n; i++) {
-            input[i] = scanner.nextLine();
-        }
         MinStack minStack = new MinStack();
-        for (int i = 0; i < n; i++) {
-            String type = input[i].split(" ")[0];
-            if (type.equals("push")){
-               minStack.push(Integer.parseInt(input[i].split(" ")[1]));
-            }else if (type.equals("getMin")){
-                System.out.println(minStack.getMin());
-            }else if (type.equals("pop")){
-                minStack.pop();
-            }else{
-                System.out.println(minStack.top());
-            }
-        }
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        System.out.println(minStack.min());
+        minStack.pop();
+        System.out.println(minStack.top());
+        System.out.println(minStack.min());
+
     }
 }
 
@@ -37,6 +25,7 @@ class MinStack {
     public MinStack() {
         A=new Stack<>();
         B=new Stack<>();
+
     }
 
     public void push(int x) {

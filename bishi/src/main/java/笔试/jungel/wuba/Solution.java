@@ -14,7 +14,7 @@ public class Solution {
     private int getNum(int index) {
 
         if (n-index==2) {
-            if (Integer.parseInt(str.substring(index,index+2))<=25) {
+            if (Integer.parseInt(str.substring(index,index+2))>=10&&Integer.parseInt(str.substring(index,index+2))<=25) {
                 return 2;
             }else {
                 return 1;
@@ -23,7 +23,7 @@ public class Solution {
 
         if (n-index==1) return 1;
         int second = 0;
-        if ((n-index)>=2&&Integer.parseInt(str.substring(index,index+2))<=25) {
+        if ((n-index)>=2&&Integer.parseInt(str.substring(index,index+2))>=10&&Integer.parseInt(str.substring(index,index+2))<=25) {
             second = getNum(index+2);
         }
         return getNum(index+1)+second;
@@ -31,6 +31,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Solution().translateNum(1215811));
+        System.out.println(new Solution().translateNum(22));
     }
 }

@@ -4,16 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Created by 林松斌的船 on 2020/8/22.
- */
 public class Test360 {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         String str=s.nextLine();
         List<String> list=new ArrayList<>();
         int last=0;
-        for (int i=0;i<str.length();i++){
+        for (int i=1;i<str.length();i++){
             if(str.charAt(i)=='n'){
               //  System.out.println(i);
                 String t=str.substring(last,i);

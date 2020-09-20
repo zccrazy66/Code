@@ -1,24 +1,8 @@
-package bishi.src.main.java.笔试.bin.BaiDu;
+package 笔试.jungel.baidu;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-/**
- * 1
- 10 2
- 3
- 1 2
- 4 5
- 8 8
- 2
- 1 4
- 6 8
- 4
- 1 2 4 8
- * Created by 林松斌的船 on 2020/9/3.
- */
-public class BaiDu02 {
+public class Main {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         List<List<Integer>> res=new LinkedList<>();
@@ -29,7 +13,7 @@ public class BaiDu02 {
         for (int l=0;l<t;l++) {
             int n = s.nextInt();
             int m = s.nextInt();
-            int[][] nums = new int[2][n + 1];
+            int[][] nums = new int[m][n + 1];
             // System.out.println("m="+m+"n="+n+"t="+t);
             //检查每组特性放入二维数组
             for (int i = 0; i < m; i++) {
@@ -56,21 +40,18 @@ public class BaiDu02 {
                         break;
                     }
                 }
-                if (is == true) {
+                if (is) {
                     sum++;
                     list.add(i);
                 }
             }
             ressum.add(sum);
             res.add(list);
-//            for (int i = 0; i < list.size(); i++) {
-//                System.out.print(list.get(i) + " ");
-//            }
+
 
         }
         for (int l=0;l<t;l++){
             System.out.println(ressum.get(l));
-           // System.out.println("qwe");
             List<Integer> cur=res.get(l);
             for (int i = 0; i < cur.size(); i++) {
                 System.out.print(cur.get(i) + " ");
