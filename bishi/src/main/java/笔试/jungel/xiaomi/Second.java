@@ -7,17 +7,18 @@ public class Second {
 
 
     public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-        String word = scanner.nextLine();
-        if ("".equals(word)||word==null) {
-            System.out.println(true);
-            return;
+        Scanner s=new Scanner(System.in);
+        int m=s.nextInt();
+        int n=s.nextInt();
+        char[][] strings=new char[m][n];
+        for (int i=0;i<m;i++){
+            for (int j=0;j<n;j++){
+                strings[i][j]=s.next().charAt(0);
+            }
         }
+        String tar=s.next();
 
-        char[][] board = {{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}};
-
-        System.out.println(new Second().exist(board,word));
+        System.out.println(new Second().exist(strings,tar));
     }
 
 

@@ -9,22 +9,22 @@ public class DD000001 {
     public static void main(String[] args) {
 
         Scanner s = new Scanner(System.in);
-         int n=s.nextInt();
-         String x=s.nextLine();
-         String str=s.nextLine();
-         StringBuffer res=new StringBuffer();
-         int i=0;
-         for (;i<str.length();i+=n){
-             if (str.length()-i<n)break;;
-            for (int j=n-1;j>=0;j--){
-                res.append(str.charAt(i+j));
+        int n = s.nextInt();
+        String x = s.nextLine();
+        String str = s.nextLine();
+        StringBuffer res = new StringBuffer();
+        int i = 0;
+        for (; i < str.length(); i += n) {
+            if (str.length() - i < n) break;
+            for (int j = n - 1; j >= 0; j--) {
+                res.append(str.charAt(i + j));
             }
-         }
-        for (int j=str.length()-1;j>=i;j--){
+        }
+        for (int j = str.length() - 1; j >= i; j--) {
             // System.out.println(j);
             res.append(str.charAt(j));
         }
-       // res.append(str);
+        // res.append(str);
         System.out.println(res);
 
     }
