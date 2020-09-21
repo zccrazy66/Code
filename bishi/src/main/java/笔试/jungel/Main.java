@@ -6,49 +6,84 @@ import java.util.*;
 
 public class Main {
 
+    private static class TreeNode{
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(){
+
+        }
+
+        TreeNode(int value){
+            this.val = value;
+            this.left = null;
+            this.right = null;
+        }
+
+        TreeNode(int value, TreeNode left, TreeNode right){
+            this.val = value;
+            this.left = left;
+            this.right = right;
+        }
+    }
+
+    public static TreeNode buildBST(int[] data){
+        //建立二叉排序树
+        //假设data中的数字是互不相同的
+        TreeNode root = new TreeNode(data[0]);
+        for(int i = 1; i < data.length; i++){
+            insert(root, data[i]);
+        }
+
+        return root;
+    }
+
+    private static TreeNode insert(TreeNode root, int value) {
+        //二叉排序树插入节点
+        if(root == null){
+            root = new TreeNode(value);
+        }else{
+            if(value <= root.val){
+                //插入到左子树
+                root.left = insert(root.left, value);
+            }else{
+                //插入到右子树
+                root.right = insert(root.right, value);
+            }
+        }
+        return root;
+    }
+
+    private static int maxLen;
+    private static int getLen(TreeNode root) {
+
+        if (root==null) return 0;
+        if (root.left==null&&root.right==null) return 1;
+        int left = getLen(root.left);
+        int right = getLen(root.right);
+        int temp = left + right+1;
+        maxLen = Math.max(temp,maxLen);
+        return Math.max(left,right)+1;
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        scanner.nextLine();
-        ArrayList<String> list = new ArrayList<>();
+        int[] arr = new int[n];
         for (int i = 0; i < n; i++) {
-            String s = scanner.nextLine();
-            list.add(s);
+            arr[i] = scanner.nextInt();
         }
 
-        int res = 0;
-        Main main = new Main();
-        for (String s : list) {
-            if (main.isValid(s)) {
-                res++;
-            }
+        if (n==1) {
+            System.out.println(1);
+            return;
         }
-        System.out.println(res);
-    }
+        TreeNode root = buildBST(arr);
 
-    private boolean isValid(String str) {
+        int len = getLen(root);
+        System.out.println(len);
 
-        int length = str.length();
-        if (length>10||length<1) return false;
-
-        for (int i = 0; i < length; i++) {
-            if (!isEnglish(str.charAt(i))) {
-
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    private boolean isEnglish(char c) {
-
-        int a = c - 'A';
-        int b = c - 'a';
-
-        if ((a>=0&&a<=25)||(b>=0&&b<=25)) return true;
-        return false;
 
     }
 }

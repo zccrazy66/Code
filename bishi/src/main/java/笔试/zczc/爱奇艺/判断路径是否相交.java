@@ -18,40 +18,33 @@ public class 判断路径是否相交 {
         Set<String> set = new HashSet<>();
         set.add("0,0");
         for (int i = 0; i < path.length(); i++) {
-            char temp = path.charAt(i);
-            int x_next = 0, y_next = 0;
-            if (temp == 'N'){
-                x_next = x;
-                y_next = y + 1;
-            }else if (temp == 'S'){
-                x_next = x;
-                y_next = y - 1;
-            }else if (temp == 'E'){
-                x_next = x + 1;
-                y_next = y;
-            }else if (temp == 'W'){
-                x_next = x - 1;
-                y_next = y;
+            char k = path.charAt(i);
+            int newX = 0, newY = 0;
+            if (k == 'N'){
+                newX = x;
+                newY = y + 1;
+            }else if (k == 'S'){
+                newX = x;
+                newY = y - 1;
+            }else if (k == 'E'){
+                newX = x + 1;
+                newY = y;
+            }else if (k == 'W'){
+                newX = x - 1;
+                newY = y;
             }
 
-            if (set.contains(x_next + "," + y_next)){
+            if (set.contains(newX + "," + newY)){
                 System.out.println("True");
                 return;
             }else {
-                set.add(x_next + "," + y_next);
-                x = x_next;
-                y = y_next;
+                set.add(newX + "," + newY);
+                x = newX;
+                y = newY;
             }
-
         }
-
         System.out.println("False");
 
-
-
     }
-
-
-
 
 }

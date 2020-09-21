@@ -1,13 +1,9 @@
-package main.java.笔试.joey.bilibili;
+package 笔试.jungel.bilibili;
 
-/**
- * @author JoeyChen
- * @data 2020/9/4 19:28
- */
-public class bili02 {
-
+public class Second {
 
     public int[] spiralOrder(int[][] matrix) {
+
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return new int[0];
         int row = matrix.length;
         int col = matrix[0].length;

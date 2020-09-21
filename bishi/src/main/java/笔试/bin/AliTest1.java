@@ -1,4 +1,4 @@
-package Code.bishi.src.main.java.笔试.bin;
+package 笔试.bin;
 
 import java.util.*;
 
