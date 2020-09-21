@@ -1,73 +1,84 @@
-package main.java.笔试.tx;
-
+package 笔试.tx;
 
 import java.util.*;
 
 public class Main {
 
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-
-        if (n<200||n>1998) {
-            System.out.println(0);
-            return;
+        int N = scanner.nextInt();
+        int M = scanner.nextInt();
+        scanner.nextLine();
+        LinkedList<Integer> list = new LinkedList<>();
+        for (int i = 0; i < M; i++) {
+            int val = scanner.nextInt();
+            list.addLast(val);
         }
 
+        // 初始数组
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        for (int i = 1; i <= N; i++) {
+
+            linkedList.addLast(i);
+        }
+
+        int size = linkedList.size();
         Main main = new Main();
-        List<H> helper = main.helper(n);
+        for (Integer integer : list) {
+            if (integer==1) {
+                linkedList= main.move(linkedList);
 
-        if (helper.size()==0) {
-            System.out.println(0);
-            return;
-        }
-
-        System.out.println(helper.size());
-        for (H h : helper) {
-            System.out.println(h.A+" "+h.B);
-        }
-
-
-    }
-
-    private List<H> helper(int n) {
-        ArrayList<H> hs = new ArrayList<>();
-        for (int i = 1; i <= 9; i++) {
-
-            for (int j = 0; j <=9 ; j++) {
-
-                for (int k = 0; k <=9 ; k++) {
-
-                    if (i!=j&&i!=k&&j!=k) {
-
-                        int A = 100*i+10*j+k;
-
-                        if ((n-A)>=100){
-                            int B = 100*i+10*k+k;
-                            if (A+B==n) {
-                                hs.add(new H(A, B));
-                            }
-                        }
-
-
-                    }
-
-                }
+            }else {
+                linkedList = main.swap(linkedList);
             }
-
         }
-
-        return hs;
-
+        for (int i = 0; i < size; i++) {
+            System.out.print(linkedList.removeFirst());
+            if (linkedList.size()!=0) {
+                System.out.print(" ");
+            }
+        }
     }
 
-    private static class H{
-        int A;
-        int B;
+    /**
+     * 交换操作
+     */
+    private LinkedList<Integer> swap(LinkedList<Integer> resList) {
 
-        public H(int a, int b) {
-            A = a;
-            B = b;
+        int num = resList.size();
+        for (int i = 0; i < num-1; i=i+2) {
+            Integer a = resList.get(i);
+            Integer b = resList.get(i + 1);
+            resList.set(i,b);
+            resList.set(i+1,a);
         }
+
+
+        return resList;
+    }
+
+    private int[] swap(int[] arr) {
+
+        int num = arr.length;
+        for (int i = 0; i < num-1; i=i+2) {
+            Integer a = arr[i];
+            Integer b = arr[i+1];
+            arr[i]=b;
+            arr[i+1] = a;
+        }
+
+
+        return arr;
+    }
+
+
+    /**
+     * 移动操作
+     */
+    private LinkedList<Integer> move(LinkedList<Integer> resList) {
+        Integer integer = resList.removeFirst();
+        resList.addLast(integer);
+        return resList;
     }
 }

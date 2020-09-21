@@ -6,8 +6,8 @@ import java.util.Stack;
 public class 有效括号 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String input = in.nextLine();
-        System.out.println(isValid(input));
+        String str = in.nextLine();
+        System.out.println(isValid(str));
     }
     public static String isValid(String s) {
         if (s.length() % 2 == 1)
