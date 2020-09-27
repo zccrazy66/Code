@@ -31,18 +31,18 @@ public class Second {
                 grid[i][j]=i*n+j;
             }
         }
-        System.out.println(JSON.toJSONString(grid));
+        // System.out.println(JSON.toJSONString(grid));
         // 对矩阵进行操作
         int a = x % 4;
         for (int i = 0; i < a; i++) {
             grid=shun(grid);
         }
-        System.out.println(JSON.toJSONString(grid));
+        // System.out.println(JSON.toJSONString(grid));
         int b=y%2;
         for (int i = 0; i < b; i++) {
             grid=fanzhun(grid);
         }
-        System.out.println(JSON.toJSONString(grid));
+        // System.out.println(JSON.toJSONString(grid));
         int c=z%4;
         for (int i = 0; i < c; i++) {
             grid=ni(grid);
