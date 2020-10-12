@@ -6,8 +6,15 @@ package main.java.笔试.joey.xingye;
  */
 public class xingye01 {
     public String changeFormatNumber(String number) {
-        String Binary = Integer.toBinaryString(number).substring(0,16);
-        String Hex = Integer.toHexString(number).toUpperCase().substring(0,4);
+
+        if (number < 0) {
+            String Binary = Integer.toBinaryString(number).substring(0,16);
+            String Hex = Integer.toHexString(number).toUpperCase().substring(0,4);
+        }
+        else {
+            String Binary = Integer.toBinaryString(number);
+            String Hex = Integer.toHexString(number).toUpperCase();
+        }
 
         StringBuffer res_1 = new StringBuffer();
         StringBuffer res_2 = new StringBuffer();
